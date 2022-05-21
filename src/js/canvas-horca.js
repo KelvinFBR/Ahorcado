@@ -10,12 +10,12 @@ ctx.lineJoin = "round";
 let radio = 25;
 
 const faces = {
-  face1: "../../assets/img/face_1.svg",
-  face2: "../../assets/img/face_2.svg",
-  face3: "../../assets/img/face_3.svg",
-  face4: "../../assets/img/face_4.svg",
-  face5: "../../assets/img/face_5.svg",
-  face6: "../../assets/img/face_6.svg",
+  face1: "assets/img/face-1.svg",
+  face2: "assets/img/face-2.svg",
+  face3: "assets/img/face-3.svg",
+  face4: "assets/img/face-4.svg",
+  face5: "assets/img/face-5.svg",
+  face6: "assets/img/face-6.svg",
 };
 
 // X
@@ -78,7 +78,8 @@ const createHead = (face, radio) => {
     ctx.imageSmoothingEnabled = false;
     ctx.webkitImageSmoothingEnabled = false;
     ctx.mozImageSmoothingEnabled = false;
-    ctx.drawImage(img, midPointX * 0.808, maxPointY * 0.15, 58, 58);
+    //   ctx.drawImage(img, midPointX * 0.808, maxPointY * 0.15, 58, 58);
+    ctx.drawImage(img, midPointX * 0.84, maxPointY * 0.172, 48, 48);
   });
 };
 
