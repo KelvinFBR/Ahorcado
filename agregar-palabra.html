@@ -14,50 +14,49 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./src/css/game-styles.css" />
+    <link rel="stylesheet" href="./src/css/home-styles.css" />
+    <link rel="stylesheet" href="./src/css/agregar-palabra-styles.css" />
     <link rel="stylesheet" href="./src/css/reset.css" />
 
     <title>Ahorcado Agregar palabra</title>
   </head>
-  <body id="pagePopUp">
+  <body>
     <main class="main-container">
-      <nav>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </nav>
-      <section class="canvas-container">
-        <canvas id="canvas-drew" class="canvas-drew"></canvas>
-        <div class="text-container">
-          <div id="letter-container" class="letter-container"></div>
-          <div id="letter-wrong-container" class="letter-wrong-container">
-            <h3>Letra Incorrecta</h3>
-            <div class="letter-wrong"></div>
-          </div>
+      <section class="field-text-container">
+        <form action="" id="form">
+          <textarea
+            name="new_word"
+            id="field-text"
+            cols="30"
+            rows="10"
+            maxlength="8"
+            minlength="3"
+            autofocus
+            placeholder="Ingrese una palabra"
+          ></textarea>
+        </form>
+        <div class="alert-container">
+          <img src="./assets/img/alert.svg" alt="alert" />
+          <span> Máx. de 8 letras</span>
         </div>
       </section>
       <section class="btn-container">
-        <a class="btn btn-primary" id="new-game">Nuevo juego</a>
-        <a href="./index.html" class="btn btn-secondary">Desistir</a>
+        <a href="" class="btn btn-primary" id="">Guardar e Iniciar juego</a>
+        <a href="index.html" class="btn btn-secondary">Cancelar</a>
       </section>
+
       <footer class="footer-container">
         <section class="autor-container">
-          <p>
-            &copy; Kelvin F. Baez Rodriguez -
-            <span id="year">2022</span>
-          </p>
+          <p>Made by Kelvin F. Baez Rodriguez</p>
         </section>
         <section class="social-container">
           <a href="#">Instagram</a>
           <a href="#">Github</a>
-          <a href="#">Linkedin</a>
         </section>
       </footer>
     </main>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./src/js/game.js" type="module"></script>
+    <script src="./src/js/agregar-palabra.js" type="module"></script>
   </body>
 </html>

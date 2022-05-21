@@ -1,0 +1,85 @@
+:root {
+  /* CSS HEX */
+  --onyx: #393d3fff;
+  --white: #fdfdffff;
+  --silver: #c6c5b9ff;
+  --steel-teal: #62929eff;
+  --dark-electric-blue: #546a7bff;
+
+  /* fonts */
+  --font-family-main: "Teko", sans-serif;
+  --font-medium: 400;
+  --font-bold: 900;
+
+  --font-size-small: 1.8rem;
+  --font-size-medium: 2.8rem;
+  --font-size-big: 3.8rem;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.field-text-container {
+  width: 70%;
+}
+
+#field-text {
+  width: 100%;
+  height: 300px;
+  resize: none;
+  outline: none;
+  border: 4px solid var(--steel-teal);
+  color: var(--white);
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: var(--font-family-main);
+  letter-spacing: 0.1rem;
+  font-size: var(--font-size-medium);
+  background-color: rgba(98, 146, 158, 0.488);
+}
+
+#field-text::placeholder {
+  color: var(--white);
+}
+
+.alert-container {
+  height: 30px;
+  color: var(--white);
+  font-size: var(--font-size-small);
+  margin: 0.4rem;
+  display: flex;
+  align-items: center;
+}
+.alert-container span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.alert-container img {
+  height: 70%;
+  margin-right: 0.5rem;
+}
+
+.btn-container {
+  margin-top: 2.8rem;
+}
+
+textarea {
+}
+
+@media screen and (min-width: 580px) {
+  /* .footer-container {
+    position: relative;
+  } */
+}
+
+@media screen and (min-width: 740px) {
+  .btn-container {
+    flex-direction: row;
+
+    /* position: ; */
+  }
+}

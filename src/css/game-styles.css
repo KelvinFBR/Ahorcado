@@ -1,0 +1,236 @@
+:root {
+  /* CSS HEX */
+  --onyx: #393d3fff;
+  --white: #fdfdffff;
+  --silver: #c6c5b9ff;
+  --steel-teal: #62929eff;
+  --dark-electric-blue: #546a7bff;
+
+  /* fonts */
+  --font-family-main: "Teko", sans-serif;
+  --font-medium: 400;
+  --font-bold: 900;
+
+  --font-size-small: 1.8rem;
+  --font-size-medium: 2.8rem;
+  --font-size-big: 3.8rem;
+}
+
+/* ajustes pantalla */
+body#pagePopUp {
+  background-color: var(--onyx);
+  height: 100vh !important;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: var(--font-family-main);
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  background-color: #fdf3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  height: 50px;
+
+  background-color: lightblue;
+}
+
+.canvas-container {
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas-drew {
+  width: 360px;
+  max-width: 480px;
+  height: 200px;
+  background-color: var(--dark-electric-blue);
+  border-radius: 10px 10px 0 0;
+  border-bottom: 4px inset var(--white);
+}
+
+.text-container {
+  width: 360px;
+  height: auto;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  background-color: rgba(98, 146, 158, 0.1);
+}
+
+.letter-container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.letter-wrong {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.letter-wrong-container {
+  width: 100%;
+  height: 50%;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.letter-wrong-container h3 {
+  margin-top: 1.5rem;
+  letter-spacing: 0.1rem;
+  color: var(--white);
+  font-size: var(--font-size-small);
+}
+
+/* buttons  */
+.btn-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn {
+  width: 240px;
+  height: 60px;
+  border: none;
+  outline: none;
+  border-radius: 0.6rem;
+  text-decoration: none;
+
+  /* center */
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size-medium);
+  letter-spacing: 0.1rem;
+  font-weight: var(--font-medium);
+  transition: all 0.25s cubic-bezier(0.17, 0.67, 0.87, 0.53);
+}
+
+.btn-primary {
+  background-color: var(--steel-teal);
+  color: var(--white);
+}
+
+.btn-secondary {
+  border: 3px solid var(--steel-teal);
+  color: var(--steel-teal);
+  background-color: none;
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(1.04);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  border: 3px solid var(--steel-teal);
+}
+
+.btn-secondary:hover {
+  background-color: var(--steel-teal);
+  color: var(--white);
+}
+
+/* footer */
+.footer-container {
+  background-color: #62929eff;
+  width: 100%;
+  min-height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  /* carbiar a relative cuando aumenta el height */
+  bottom: 0;
+  margin-top: 2rem;
+}
+
+.footer-container section {
+  margin: 1.5rem;
+  font-size: var(--font-size-small);
+  color: var(--white);
+}
+
+/* momentanio posibles modificaciones agregando icons - social media*/
+.footer-container section a {
+  color: var(--white);
+  margin: 0 1rem;
+}
+
+.autor-container {
+  order: 1;
+}
+
+.lineSpan {
+  display: inline-block;
+  width: 8%;
+  min-width: 25px;
+  max-width: 40px;
+  height: 35px;
+  margin: 0.8rem;
+  border-bottom: 3px solid #393d3fff;
+  color: var(--white);
+  font-size: var(--font-size-big);
+}
+
+@media screen and (min-width: 440px) {
+  .btn {
+    width: 140px;
+  }
+
+  .btn-container {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .text-container {
+    width: 480px;
+  }
+
+  .canvas-drew {
+    width: 480px;
+    height: 250px;
+  }
+
+  .footer-container {
+    flex-direction: row;
+  }
+
+  .autor-container {
+    order: 0;
+  }
+}

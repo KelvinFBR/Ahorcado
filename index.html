@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- fontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/0e441a8b10.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,19 +20,21 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./src/css/styles.css" />
+    <link rel="stylesheet" href="./src/css/home-styles.css" />
     <link rel="stylesheet" href="./src/css/reset.css" />
     <title>Ahorcado</title>
   </head>
   <body>
     <main class="main-container">
       <section class="btn-container">
-        <a href="#" class="btn btn-primary">iniciar juego</a>
-        <a href="#" class="btn btn-secondary"> Agregar palabra </a>
+        <a href="game.html" class="btn btn-primary">iniciar juego</a>
+        <a href="agregar-palabra.html" class="btn btn-secondary">
+          Agregar palabra
+        </a>
       </section>
       <footer class="footer-container">
         <section class="autor-container">
-          <p>Made by Kelvin F. Baez Rodriguez</p>
+          <p>&copy; Kelvin F. Baez Rodriguez <span class="year">2022</span></p>
         </section>
 
         <section class="social-container">
@@ -35,5 +43,7 @@
         </section>
       </footer>
     </main>
+
+    <script src="./src/js/localStorage-default.js"></script>
   </body>
 </html>
