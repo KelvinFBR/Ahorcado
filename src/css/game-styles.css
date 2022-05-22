@@ -35,12 +35,12 @@ html {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-nav {
+header {
   width: 100%;
   height: 50px;
-
   background-color: lightblue;
 }
 
@@ -176,18 +176,35 @@ nav {
   /* carbiar a relative cuando aumenta el height */
   bottom: 0;
   margin-top: 2rem;
+  padding: 1rem;
 }
 
 .footer-container section {
-  margin: 1.5rem;
   font-size: var(--font-size-small);
   color: var(--white);
 }
 
-/* momentanio posibles modificaciones agregando icons - social media*/
-.footer-container section a {
-  color: var(--white);
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.social-container a {
+  display: inline-block;
   margin: 0 1rem;
+  width: 35px;
+  height: 35px;
+  transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.social-container a:hover {
+  transform: scale(1.09);
+}
+
+.social-container a img {
+  width: 100%;
+  height: 100%;
 }
 
 .autor-container {
@@ -207,6 +224,14 @@ nav {
 }
 
 @media screen and (min-width: 440px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-container section {
+    margin: 0.5rem 0;
+  }
+
   .btn {
     width: 140px;
   }
