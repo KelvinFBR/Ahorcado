@@ -44,6 +44,13 @@ header {
   background-color: lightblue;
 }
 
+.life {
+  color: var(--white);
+  font-size: var(--font-size-small);
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
 .canvas-container {
   width: 100%;
   margin: 2rem 0;

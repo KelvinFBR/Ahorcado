@@ -16,6 +16,7 @@ import { getWordSecret } from "./palabra-secreta.js";
 import { createFieldLetter, createFieldLetterWrong } from "./horca-letra.js";
 
 const newGame = document.getElementById("new-game");
+const life = document.getElementById("life");
 const wrongLineContainer = document.querySelectorAll(".letter-wrong");
 
 // obteniendo datos de local Storage
@@ -24,6 +25,7 @@ const wordsStorage = JSON.parse(localStorage.getItem("words"));
 let wordSecret;
 let contadorHorca = 1;
 let letterNotValid = true;
+let countLife = 9;
 
 // horca letra
 getWordSecret(wordsStorage, (word) => {
@@ -31,16 +33,31 @@ getWordSecret(wordsStorage, (word) => {
   wordSecret = word;
   createFieldLetter(lengthWord);
 });
+life.textContent = "";
+life.textContent = countLife;
 
 createFieldLetterWrong();
 
 let arrayWordSecret = [...wordSecret];
 
+const lifeGame = () => {
+  // descontar vidas
+  countLife--;
+  life.textContent = "";
+  life.textContent = countLife;
+};
+
+const restartlifeGame = () => {
+  countLife = 9;
+  life.textContent = "";
+  life.textContent = countLife;
+};
+
 // restart
 newGame.addEventListener("click", () => {
   restartGame();
   contadorHorca = 1;
-
+  restartlifeGame();
   Swal.fire({
     position: "center",
     icon: "success",
@@ -49,7 +66,7 @@ newGame.addEventListener("click", () => {
     background: "#62929eff",
     color: "#fdfdffff",
     showConfirmButton: false,
-    // timer: 1500,
+    timer: 1500,
   });
 
   getWordSecret(wordsStorage, (word) => {
@@ -69,6 +86,8 @@ const addLetter = (letter, i) => {
 };
 
 const drawParts = (keyPress) => {
+  // descontar vidas
+  lifeGame();
   // erroneos
   if (contadorHorca === 1) {
     createTree();
@@ -113,14 +132,13 @@ const drawParts = (keyPress) => {
     Swal.fire({
       position: "center",
       icon: "warning",
-      iconHtml: "😥",
+      iconHtml: "😪",
       title: "Que mal, Casi lo logras",
       background: "#62929eff",
       color: "#fdfdffff",
       showConfirmButton: false,
-      //   timer: 1500,
+      timer: 1500,
     });
-
     contadorHorca = 1;
   }
 
@@ -138,9 +156,9 @@ document.addEventListener("keyup", (e) => {
     for (let i = 0; i < arrayWordSecret.length; i++) {
       let letter = arrayWordSecret[i];
 
-      console.log({ wordSecret, letter });
+      //   console.log({ wordSecret, letter });
       if (letter === keyPress) {
-        console.log("palabra valida");
+        // console.log("palabra valida");
         arrayWordSecret.splice(i, 1, "0");
         addLetter(letter, i);
         return;

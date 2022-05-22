@@ -67,6 +67,6 @@ btn.addEventListener("click", (e) => {
 
   // *  redirecionar al juego
   setInterval(() => {
-    window.location.href = "../game.html";
+    window.location.href = "game.html";
   }, 2000);
 });

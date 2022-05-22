@@ -19,11 +19,9 @@ const faces = {
 };
 
 // X
-const initPointX = 0;
 const midPointX = canvasDrew.width / 2;
 const maxPointX = canvasDrew.width;
 // Y
-const initPointY = 0;
 const midPointY = canvasDrew.height / 2;
 const maxPointY = canvasDrew.height;
 
