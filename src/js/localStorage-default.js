@@ -1,3 +1,11 @@
+import {
+  addModeStorage,
+  addMode,
+  getModeStorage,
+  changeMode,
+  validaModeStorage,
+} from "./modes.js";
+
 const wordsDefault = {
   words: [
     "PADRE",
@@ -12,7 +20,21 @@ const wordsDefault = {
   ],
 };
 
-console.log(wordsDefault.words);
+const circleSwitch = document.getElementById("circle-switch");
+let localStorageMode;
+
+circleSwitch.addEventListener("click", () => {
+  localStorageMode = getModeStorage();
+  if (localStorageMode.mode !== "dark") {
+    document.body.classList.remove("light");
+    addModeStorage("dark");
+  } else {
+    document.body.classList.add("light");
+    addModeStorage("light");
+  }
+});
+
+validaModeStorage(localStorageMode);
 
 if (!localStorage.getItem("words")) {
   localStorage.setItem("words", JSON.stringify(wordsDefault));

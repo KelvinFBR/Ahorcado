@@ -25,12 +25,43 @@ html {
   width: 70%;
 }
 
-header {
+.header-container {
   width: 100%;
   height: 50px;
-  background-color: lightblue;
+
   position: absolute;
   top: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.logo p {
+  font-size: var(--font-size-medium);
+  color: var(--white);
+}
+
+/* switch mode */
+.switch-mode {
+  width: 55px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: var(--steel-teal);
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.circle-switch {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: var(--onyx);
 }
 
 body {
@@ -140,6 +171,7 @@ body {
 .btn-primary:hover {
   background-color: transparent;
   border: 3px solid var(--steel-teal);
+  color: var(--steel-teal);
 }
 
 .btn-secondary:hover {
@@ -148,9 +180,10 @@ body {
 }
 
 .footer-container {
-  background-color: #62929eff;
   width: 100%;
   min-height: 5rem;
+  background-color: var(--steel-teal);
+  color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -165,7 +198,6 @@ body {
 
 .footer-container section {
   font-size: var(--font-size-small);
-  color: var(--white);
 }
 
 .social-container {
@@ -177,8 +209,8 @@ body {
 .social-container a {
   display: inline-block;
   margin: 0 1rem;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -186,7 +218,8 @@ body {
   transform: scale(1.09);
 }
 
-.social-container a img {
+.social-container a svg {
+  fill: var(--white);
   width: 100%;
   height: 100%;
 }
@@ -204,18 +237,23 @@ body {
 /* ! media palabra*/
 
 @media screen and (max-height: 580px) {
-  body {
-    background-color: red;
-  }
-
   .footer-container {
-    position: relative;
-    top: 35px;
+    position: static;
+    /* top: 35px; */
   }
 
   header {
-    position: relative;
-    top: 100px;
+    position: static;
+    /* top: 100px; */
+  }
+
+  .main-container {
+    display: block;
+  }
+
+  .field-text-container {
+    margin: 0 auto;
+    margin-top: 2rem;
   }
 }
 

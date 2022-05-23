@@ -10,14 +10,17 @@ import {
   createSecondFoot,
   restartGame,
   radio,
+  switchColorCanvas,
 } from "./canvas-horca.js";
 
 import { getWordSecret } from "./palabra-secreta.js";
 import { createFieldLetter, createFieldLetterWrong } from "./horca-letra.js";
+import { validaModeStorage, getModeStorage, addModeStorage } from "./modes.js";
+import { alertLoading, normalAlert, normalAlertIcon } from "./alerts.js";
 
 const newGame = document.getElementById("new-game");
 const life = document.getElementById("life");
-const wrongLineContainer = document.querySelectorAll(".letter-wrong");
+const circleSwitch = document.getElementById("circle-switch");
 
 // obteniendo datos de local Storage
 const wordsStorage = JSON.parse(localStorage.getItem("words"));
@@ -26,6 +29,7 @@ let wordSecret;
 let contadorHorca = 1;
 let letterNotValid = true;
 let countLife = 9;
+let localStorageMode;
 
 // horca letra
 getWordSecret(wordsStorage, (word) => {
@@ -40,34 +44,71 @@ createFieldLetterWrong();
 
 let arrayWordSecret = [...wordSecret];
 
-const lifeGame = () => {
-  // descontar vidas
-  countLife--;
+// restar intentos(vidas)
+const subtractLifeGame = () => {
+  if (countLife > 0) {
+    countLife--;
+  }
+
   life.textContent = "";
   life.textContent = countLife;
 };
 
+// restaurar vida
 const restartlifeGame = () => {
   countLife = 9;
   life.textContent = "";
   life.textContent = countLife;
 };
 
-// restart
+const restartGameLossWin = () => {
+  setTimeout(() => {
+    // restaurar juego
+    restartGame();
+    restartlifeGame();
+    contadorHorca = 1;
+
+    // generar nueva palabra
+    getWordSecret(wordsStorage, (word) => {
+      let lengthWord = word.length;
+      wordSecret = word;
+      createFieldLetter(lengthWord);
+      arrayWordSecret = [...wordSecret];
+    });
+    createFieldLetterWrong();
+  }, 800);
+};
+
+// validar juego perdido
+const validateLoss = (life) => {
+  if (life === 9) {
+    // alert
+    normalAlertIcon("Que mal, Casi lo logras", "warning", "😪", 1800);
+
+    restartGameLossWin();
+  }
+};
+
+// ! validar ganador
+const validateWinner = (arrayWordSecret) => {
+  let lengthWord = arrayWordSecret.length;
+  let ZeroOnArray = arrayWordSecret.filter((x) => x == "0").length;
+  if (ZeroOnArray === lengthWord) {
+    // alerta
+    normalAlertIcon("Felicidades, Ganaste", "success", "🏆", 1800);
+
+    restartGameLossWin();
+  }
+};
+
+// restaurar juego
 newGame.addEventListener("click", () => {
   restartGame();
-  contadorHorca = 1;
   restartlifeGame();
-  Swal.fire({
-    position: "center",
-    icon: "success",
-    iconHtml: "👍🏻",
-    title: "Buena Suerte",
-    background: "#62929eff",
-    color: "#fdfdffff",
-    showConfirmButton: false,
-    timer: 1500,
-  });
+  contadorHorca = 1;
+
+  //   alert;
+  normalAlert("Juego Restaurado", "success", 1500);
 
   getWordSecret(wordsStorage, (word) => {
     let lengthWord = word.length;
@@ -85,10 +126,11 @@ const addLetter = (letter, i) => {
   lettersWord[i].textContent = letter;
 };
 
+// dibujar partes de la horca
 const drawParts = (keyPress) => {
   // descontar vidas
-  lifeGame();
-  // erroneos
+  subtractLifeGame();
+
   if (contadorHorca === 1) {
     createTree();
   }
@@ -122,25 +164,14 @@ const drawParts = (keyPress) => {
     createHead("face6", radio);
   }
 
-  // letras erroneas
+  // pintar letras erroneas
   if (contadorHorca <= 9) {
     const wrongLineSpan = document.querySelectorAll(".letter-wrong .lineSpan");
     wrongLineSpan[contadorHorca - 1].textContent = keyPress;
   }
 
-  if (contadorHorca === 9) {
-    Swal.fire({
-      position: "center",
-      icon: "warning",
-      iconHtml: "😪",
-      title: "Que mal, Casi lo logras",
-      background: "#62929eff",
-      color: "#fdfdffff",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    contadorHorca = 1;
-  }
+  // validar ganador
+  validateLoss(contadorHorca);
 
   contadorHorca++;
 };
@@ -161,6 +192,8 @@ document.addEventListener("keyup", (e) => {
         // console.log("palabra valida");
         arrayWordSecret.splice(i, 1, "0");
         addLetter(letter, i);
+        validateWinner(arrayWordSecret);
+
         return;
       }
     }
@@ -171,3 +204,18 @@ document.addEventListener("keyup", (e) => {
     }
   }
 });
+
+circleSwitch.addEventListener("click", () => {
+  localStorageMode = getModeStorage();
+  if (localStorageMode.mode !== "dark") {
+    document.body.classList.remove("light");
+    addModeStorage("dark");
+  } else {
+    document.body.classList.add("light");
+    addModeStorage("light");
+  }
+
+  switchColorCanvas();
+});
+
+validaModeStorage(localStorageMode);

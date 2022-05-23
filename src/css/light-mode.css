@@ -1,0 +1,117 @@
+:root {
+  /* CSS HEX */
+  --onyx: #393d3fff;
+  --white: #fdfdffff;
+  --silver: #c6c5b9ff;
+  --steel-teal: #62929eff;
+  --dark-electric-blue: #546a7bff;
+
+  /* fonts */
+  --font-family-main: "Teko", sans-serif;
+  --font-medium: 400;
+  --font-bold: 900;
+
+  --font-size-small: 1.8rem;
+  --font-size-medium: 2.8rem;
+  --font-size-big: 3.8rem;
+}
+
+body.light .logo p {
+  font-size: var(--font-size-medium);
+  color: var(--onyx);
+}
+
+/* switch mode */
+body.light .switch-mode {
+  width: 55px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: var(--onyx);
+  /* padding: 0.2rem; */
+
+  display: flex;
+  align-items: center;
+}
+
+body.light .circle-switch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* transform: translateX(calc(100%)); */
+  transform: translateX(calc(100% + 10px));
+  background-color: var(--white);
+}
+
+body.light {
+  background-color: var(--white);
+}
+
+/* footer */
+body.light .footer-container {
+  background-color: var(--silver);
+  color: var(--onyx);
+}
+
+/* logos */
+body.light .social-container a svg {
+  fill: var(--onyx);
+}
+
+/* button */
+body.light .btn-primary {
+  background-color: var(--onyx);
+}
+body.light .btn-secondary {
+  border: 3px solid var(--onyx);
+  color: var(--onyx);
+}
+
+body.light .btn-primary:visited {
+  color: var(--white);
+}
+
+body.light .btn-primary:hover {
+  border: 3px solid var(--onyx);
+  color: var(--onyx);
+  background-color: transparent;
+}
+
+body.light .btn-secondary:hover {
+  background-color: var(--onyx);
+  color: var(--white);
+}
+
+/* textarea */
+body.light #field-text {
+  border: 4px solid var(--onyx);
+  color: var(--onyx);
+  background-color: rgba(198, 197, 185, 0.63);
+}
+
+body.light #field-text::placeholder {
+  color: var(--onyx);
+}
+
+/* game */
+body.light .text-container {
+  background-color: rgba(198, 197, 185, 0.348);
+}
+
+body.light .letter-wrong-container h3 {
+  color: var(--onyx);
+}
+
+body.light .canvas-drew {
+  background-color: var(--silver);
+  border-bottom: 4px inset var(--onyx);
+}
+
+body.light .life {
+  color: var(--onyx);
+}
+
+body.light .lineSpan {
+  border-bottom: 3px solid var(--silver);
+  color: var(--onyx);
+}

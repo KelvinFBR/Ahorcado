@@ -1,5 +1,10 @@
+import { validaModeStorage, getModeStorage, addModeStorage } from "./modes.js";
+import { alertLoading, normalAlert } from "./alerts.js";
 const btn = document.querySelector(".btn-primary");
 const form = document.querySelector("#form");
+const circleSwitch = document.getElementById("circle-switch");
+
+let localStorageMode;
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -9,20 +14,12 @@ btn.addEventListener("click", (e) => {
   const newWord = data.get("new_word").toUpperCase();
 
   //* validar formularios
-  //   let reg = new RegExp("[0-9]", "g");
   let reg = new RegExp("^[a-zA-Z ]*$", "g");
 
   if (newWord.length <= 0 || newWord.length > 8) {
     //   alerta
-    Swal.fire({
-      position: "center",
-      icon: "warning",
-      title: "Cantidad de letras no valida",
-      showConfirmButton: false,
-      background: "#62929eff",
-      color: "#fdfdffff",
-      timer: 1800,
-    });
+
+    normalAlert("Cantidad de letras no valida", "warning", 1800);
 
     //   reset formulario
     form.reset();
@@ -32,15 +29,7 @@ btn.addEventListener("click", (e) => {
 
   if (!reg.test(newWord)) {
     // alerta;
-    Swal.fire({
-      position: "center",
-      icon: "warning",
-      title: "No se permiten numeros o signos",
-      showConfirmButton: false,
-      background: "#62929eff",
-      color: "#fdfdffff",
-      timer: 1800,
-    });
+    normalAlert("No se permiten numeros o signos", "warning", 1800);
 
     //   reset formulario
     form.reset();
@@ -53,20 +42,24 @@ btn.addEventListener("click", (e) => {
   wordsStorage["words"].push(newWord);
   localStorage.setItem("words", JSON.stringify(wordsStorage));
 
-  //   alerta
-  Swal.fire({
-    title: "Guardando palabra...",
-    background: "#62929eff",
-    color: "#fdfdffff",
-    timer: 1800,
-    timerProgressBar: true,
-    didOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  //   loading
+  alertLoading("Guardando palabra...", 1800);
 
   // *  redirecionar al juego
   setInterval(() => {
     window.location.href = "game.html";
   }, 2000);
 });
+
+circleSwitch.addEventListener("click", () => {
+  localStorageMode = getModeStorage();
+  if (localStorageMode.mode !== "dark") {
+    document.body.classList.remove("light");
+    addModeStorage("dark");
+  } else {
+    document.body.classList.add("light");
+    addModeStorage("light");
+  }
+});
+
+validaModeStorage();

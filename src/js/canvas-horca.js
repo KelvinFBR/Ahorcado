@@ -1,9 +1,28 @@
-const canvasDrew = document.getElementById("canvas-drew");
+import { getModeStorage } from "./modes.js";
 
+const canvasDrew = document.getElementById("canvas-drew");
 const ctx = canvasDrew.getContext("2d");
 
-ctx.strokeStyle = "#fdfdffff";
-ctx.fillStyle = "#fdfdffff";
+let fillColor;
+let strokeColor;
+let lineDarkMode;
+let linelightMode;
+
+const switchColorCanvas = () => {
+  let { mode } = getModeStorage();
+  //   alerta
+  if (mode === "dark") {
+    //   dark
+    strokeColor = "#fdfdffff";
+  } else {
+    // light
+    strokeColor = "#393d3fff";
+  }
+};
+
+switchColorCanvas();
+
+ctx.fillStyle = strokeColor;
 ctx.lineWidth = 2;
 ctx.lineCap = "round";
 ctx.lineJoin = "round";
@@ -25,15 +44,8 @@ const maxPointX = canvasDrew.width;
 const midPointY = canvasDrew.height / 2;
 const maxPointY = canvasDrew.height;
 
-// const createBase = () => {
-//   //   base;
-//   ctx.beginPath();
-//   ctx.moveTo(maxPointX, maxPointY);
-//   ctx.lineTo(0, maxPointY);
-//   ctx.stroke();
-// };
-
 const createTree = () => {
+  ctx.strokeStyle = strokeColor;
   ctx.beginPath();
   ctx.moveTo(midPointX * 0.6, maxPointY);
   // arbol
@@ -64,19 +76,20 @@ const createHead = (face, radio) => {
   ctx.beginPath();
   let img = new Image();
   img.src = faces[face];
-
   //   borrador
   ctx.clearRect(midPointX - 35, midPointY * 0.32, 65, 51.4);
   //   circulo face
+
+  ctx.strokeStyle = "#fdfdffff";
   ctx.arc(midPointX * 0.834 + radio, maxPointY * 0.33, radio, 0, Math.PI * 2);
   ctx.stroke();
 
+  ctx.strokeStyle = strokeColor;
   //   img face
   img.addEventListener("load", () => {
     ctx.imageSmoothingEnabled = false;
     ctx.webkitImageSmoothingEnabled = false;
     ctx.mozImageSmoothingEnabled = false;
-    //   ctx.drawImage(img, midPointX * 0.808, maxPointY * 0.15, 58, 58);
     ctx.drawImage(img, midPointX * 0.84, maxPointY * 0.172, 48, 48);
   });
 };
@@ -142,4 +155,5 @@ export {
   createSecondFoot,
   restartGame,
   radio,
+  switchColorCanvas,
 };
