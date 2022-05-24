@@ -3,10 +3,7 @@ import { getModeStorage } from "./modes.js";
 const canvasDrew = document.getElementById("canvas-drew");
 const ctx = canvasDrew.getContext("2d");
 
-let fillColor;
 let strokeColor;
-let lineDarkMode;
-let linelightMode;
 
 const switchColorCanvas = () => {
   let { mode } = getModeStorage();
@@ -47,9 +44,13 @@ const maxPointY = canvasDrew.height;
 const createTree = () => {
   ctx.strokeStyle = strokeColor;
   ctx.beginPath();
-  ctx.moveTo(midPointX * 0.6, maxPointY);
   // arbol
+  ctx.moveTo(midPointX * 0.6, maxPointY);
   ctx.lineTo(midPointX * 0.6, maxPointY * 0.1);
+
+  //   soporte;
+  ctx.moveTo(midPointX * 0.75, maxPointY * 0.1);
+  ctx.lineTo(midPointX * 0.6, maxPointY * 0.25);
   // trazo
   ctx.stroke();
 };

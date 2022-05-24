@@ -2,6 +2,7 @@ import { getModeStorage } from "./modes.js";
 let colorLetterAlert = "";
 let colorBackgroundAlert = "";
 
+// loading
 const alertLoading = (text, time) => {
   let modeStorage = getModeStorage();
   //   alerta
@@ -27,6 +28,7 @@ const alertLoading = (text, time) => {
   });
 };
 
+// alerta normales
 const normalAlert = (text, type, time) => {
   let modeStorage = getModeStorage();
 
@@ -51,6 +53,7 @@ const normalAlert = (text, type, time) => {
   });
 };
 
+// alertas con iconos
 const normalAlertIcon = (text, type, icon, time) => {
   let modeStorage = getModeStorage();
 

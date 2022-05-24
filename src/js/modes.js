@@ -23,9 +23,6 @@ const addMode = () => {
   }
 };
 
-// circleSwitch.addEventListener("click", validateMode);
-// validaModeStorage();
-
 // validaciones
 const validateMode = () => {
   localStorageMode = getModeStorage();

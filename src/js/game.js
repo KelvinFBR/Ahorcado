@@ -16,7 +16,7 @@ import {
 import { getWordSecret } from "./palabra-secreta.js";
 import { createFieldLetter, createFieldLetterWrong } from "./horca-letra.js";
 import { validaModeStorage, getModeStorage, addModeStorage } from "./modes.js";
-import { alertLoading, normalAlert, normalAlertIcon } from "./alerts.js";
+import { normalAlert, normalAlertIcon } from "./alerts.js";
 
 const newGame = document.getElementById("new-game");
 const life = document.getElementById("life");
@@ -89,7 +89,7 @@ const validateLoss = (life) => {
   }
 };
 
-// ! validar ganador
+//  validar ganador
 const validateWinner = (arrayWordSecret) => {
   let lengthWord = arrayWordSecret.length;
   let ZeroOnArray = arrayWordSecret.filter((x) => x == "0").length;
@@ -187,9 +187,7 @@ document.addEventListener("keyup", (e) => {
     for (let i = 0; i < arrayWordSecret.length; i++) {
       let letter = arrayWordSecret[i];
 
-      //   console.log({ wordSecret, letter });
       if (letter === keyPress) {
-        // console.log("palabra valida");
         arrayWordSecret.splice(i, 1, "0");
         addLetter(letter, i);
         validateWinner(arrayWordSecret);
