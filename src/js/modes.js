@@ -1,6 +1,3 @@
-let linelightMode = "#393d3fff";
-let lineDarkMode = "#fdfdffff";
-
 const localStorageMode = {
   mode: "",
 };

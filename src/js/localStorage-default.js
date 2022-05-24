@@ -1,10 +1,4 @@
-import {
-  addModeStorage,
-  addMode,
-  getModeStorage,
-  changeMode,
-  validaModeStorage,
-} from "./modes.js";
+import { addModeStorage, getModeStorage, validaModeStorage } from "./modes.js";
 
 const wordsDefault = {
   words: [

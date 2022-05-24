@@ -249,7 +249,7 @@ html {
 }
 
 .social-container a:hover {
-  transform: scale(1.09);
+  transform: scale(1.09) rotate(10deg);
 }
 
 .social-container a svg {
