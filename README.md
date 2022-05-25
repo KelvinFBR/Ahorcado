@@ -1,8 +1,15 @@
-# Alura Challenge - Ahorcado
+# Alura + OracleONE - Challenge Ahorcado
 
-crear funcion para dark mode detectando cuando en una de las paginas activo el dark o el light.
+En este proyecto aplique el dark y light ⚫⚪ mode junto con localStorage para guardar el modo. Aplicando en la primera interaccion el modo de preferencia que tenga el sistema ⚫⚪.
 
-mediaqueris de paginas creadas
+---
 
-aplicar logica de local storage si no agraga palabra que ejecute las por dafault
-! agregar al local storage las palabras por default al inicio al index.html
+## Tecnologias utilizadas:
+
+<img src="https://cdn-icons-png.flaticon.com/512/174/174854.png" width='30px' ><img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" width='30px' ><img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" width='30px' ><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" width='30px' >
+
+---
+
+![presentacion](https://i.imgur.com/5pwDFhO.png)
+
+## [Ver Pagina](https://kelvinfbr.github.io/Ahorcado/) 👈
