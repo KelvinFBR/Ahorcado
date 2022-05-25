@@ -9,6 +9,9 @@ let localStorageMode;
 btn.addEventListener("click", (e) => {
   e.preventDefault();
 
+  // capturar palabra en el localStorage
+  const wordsStorage = JSON.parse(localStorage.getItem("words"));
+
   //* capturar datos del formulario
   let data = new FormData(form);
   const newWord = data.get("new_word").toUpperCase();
@@ -37,8 +40,18 @@ btn.addEventListener("click", (e) => {
     throw new Error("No se permiten numeros");
   }
 
+  if (wordsStorage["words"].includes(newWord)) {
+    //   alerta
+
+    normalAlert("Esta palabra ya existe", "warning", 1800);
+
+    //   reset formulario
+    form.reset();
+
+    throw new Error("Esta palabra ya existe");
+  }
+
   //* Agregar palabra nueva a la lista de palabras y subirla a localStorage
-  const wordsStorage = JSON.parse(localStorage.getItem("words"));
   wordsStorage["words"].push(newWord);
   localStorage.setItem("words", JSON.stringify(wordsStorage));
 
