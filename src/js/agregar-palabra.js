@@ -16,7 +16,7 @@ btn.addEventListener("click", (e) => {
   //* validar formularios
   let reg = new RegExp("^[a-zA-Z ]*$", "g");
 
-  if (newWord.length <= 0 || newWord.length > 8) {
+  if (newWord.length < 3 || newWord.length > 8) {
     //   alerta
 
     normalAlert("Cantidad de letras no valida", "warning", 1800);
