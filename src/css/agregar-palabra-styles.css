@@ -252,9 +252,8 @@ body {
     /* top: 35px; */
   }
 
-  header {
-    position: static;
-    /* top: 100px; */
+  .header-container {
+    position: relative;
   }
 
   .main-container {
