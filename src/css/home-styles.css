@@ -101,6 +101,7 @@ html {
   outline: none;
   border-radius: 0.8rem;
   text-decoration: none;
+  color: var(--white);
 
   /* center */
   display: grid;
@@ -125,7 +126,8 @@ html {
 .btn-secondary:active {
   transform: scale(1.04);
 }
-.btn-primary:visited {
+.btn:visited,
+.btn:active {
   color: var(--white);
 }
 
