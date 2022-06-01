@@ -30,6 +30,7 @@ let contadorHorca = 1;
 let letterNotValid = true;
 let countLife = 9;
 let localStorageMode;
+let lettersWrong = [];
 
 // horca letra
 getWordSecret(wordsStorage, (word) => {
@@ -67,6 +68,7 @@ const restartGameLossWin = () => {
     restartGame();
     restartlifeGame();
     contadorHorca = 1;
+    lettersWrong = [];
 
     // generar nueva palabra
     getWordSecret(wordsStorage, (word) => {
@@ -106,6 +108,7 @@ newGame.addEventListener("click", () => {
   restartGame();
   restartlifeGame();
   contadorHorca = 1;
+  lettersWrong = [];
 
   //   alert;
   normalAlert("Juego Restaurado", "success", 1500);
@@ -196,9 +199,11 @@ document.addEventListener("keyup", (e) => {
       }
     }
 
-    if (letterNotValid) {
+    if (letterNotValid && !lettersWrong.includes(keyPress)) {
       drawParts(keyPress);
       letterNotValid = true;
+      lettersWrong.push(keyPress);
+      console.log(lettersWrong);
     }
   }
 });
