@@ -157,4 +157,5 @@ export {
   restartGame,
   radio,
   switchColorCanvas,
+  canvasDrew,
 };

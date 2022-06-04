@@ -25,6 +25,7 @@ html {
   width: 70%;
 }
 
+
 .header-container {
   width: 100%;
   height: 80px;
@@ -122,9 +123,10 @@ body {
   align-items: center;
 }
 
-.alert-container img {
+.alert-container svg {
   height: 70%;
   margin-right: 0.5rem;
+  fill: var(--white);
 }
 
 /* buttons  */

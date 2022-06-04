@@ -101,6 +101,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .canvas-drew {
@@ -276,6 +277,46 @@ html {
   font-size: var(--font-size-big);
 }
 
+.press-me-keyboard {
+  display: block;
+  position: absolute;
+  bottom: 180px;
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-small);
+  color: var(--white);
+  text-align: center;
+}
+
+#keyboard-mobile {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  padding: 1rem 0;
+  opacity: 0;
+  color: transparent;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.press-me-keyboard label {
+  display: none;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.press-me-keyboard.mobile label {
+  display: block;
+}
+
+#keyboard-mobile:focus + label {
+  opacity: 0;
+  transform: scale(0);
+}
+
 @media screen and (min-width: 440px) {
   .footer-container {
     flex-direction: column;
@@ -316,12 +357,10 @@ html {
 @media screen and (max-height: 580px) {
   .footer-container {
     position: static;
-    /* top: 35px; */
   }
 
   header {
     position: static;
-    /* top: 100px; */
   }
 
   .main-container {

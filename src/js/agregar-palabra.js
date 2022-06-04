@@ -14,7 +14,7 @@ btn.addEventListener("click", (e) => {
 
   //* capturar datos del formulario
   let data = new FormData(form);
-  const newWord = data.get("new_word").toUpperCase();
+  const newWord = data.get("new_word").trim().toUpperCase();
 
   //* validar formularios
   let reg = new RegExp("^[a-zA-Z ]*$", "g");

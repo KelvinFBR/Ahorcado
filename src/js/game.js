@@ -11,6 +11,7 @@ import {
   restartGame,
   radio,
   switchColorCanvas,
+  canvasDrew,
 } from "./canvas-horca.js";
 
 import { getWordSecret } from "./palabra-secreta.js";
@@ -21,6 +22,8 @@ import { normalAlert, normalAlertIcon } from "./alerts.js";
 const newGame = document.getElementById("new-game");
 const life = document.getElementById("life");
 const circleSwitch = document.getElementById("circle-switch");
+const keyboardMobile = document.getElementById("keyboard-mobile");
+const pressMe = document.querySelector(".press-me-keyboard");
 
 // obteniendo datos de local Storage
 const wordsStorage = JSON.parse(localStorage.getItem("words"));
@@ -84,6 +87,7 @@ const restartGameLossWin = () => {
 // validar juego perdido
 const validateLoss = (life) => {
   if (life === 9) {
+    keyboardMobile.blur();
     // alert
     normalAlertIcon("Que mal, Casi lo logras", "warning", "😪", 1800);
 
@@ -96,6 +100,8 @@ const validateWinner = (arrayWordSecret) => {
   let lengthWord = arrayWordSecret.length;
   let ZeroOnArray = arrayWordSecret.filter((x) => x == "0").length;
   if (ZeroOnArray === lengthWord) {
+    keyboardMobile.blur();
+
     // alerta
     normalAlertIcon("Felicidades, Ganaste", "success", "🏆", 1800);
 
@@ -179,10 +185,15 @@ const drawParts = (keyPress) => {
   contadorHorca++;
 };
 
-// start
-document.addEventListener("keyup", (e) => {
+const keyboardValidate = (e) => {
   const reg = RegExp("[a-z]", "i");
-  let keyPress = e.key.toUpperCase();
+  let keyPress;
+
+  if (typeof e !== "string") {
+    keyPress = e.key.toUpperCase();
+  } else {
+    keyPress = e.toUpperCase();
+  }
 
   //* validar si la tecla presionada es una letra
   if (reg.test(keyPress) && keyPress.length === 1) {
@@ -203,10 +214,34 @@ document.addEventListener("keyup", (e) => {
       drawParts(keyPress);
       letterNotValid = true;
       lettersWrong.push(keyPress);
-      console.log(lettersWrong);
     }
   }
-});
+};
+
+if (
+  !(
+    navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)
+  )
+) {
+  pressMe.classList.remove("mobile");
+  // start
+  document.addEventListener("keyup", (e) => {
+    keyboardValidate(e);
+  });
+} else {
+  pressMe.classList.add("mobile");
+  // keyboardmobile
+  keyboardMobile.addEventListener("input", (e) => {
+    keyboardValidate(e.data);
+    keyboardMobile.value = "";
+  });
+}
 
 circleSwitch.addEventListener("click", () => {
   localStorageMode = getModeStorage();
