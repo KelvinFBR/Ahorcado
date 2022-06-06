@@ -88,8 +88,19 @@ const restartGameLossWin = () => {
 const validateLoss = (life) => {
   if (life === 9) {
     keyboardMobile.blur();
+
+    const modeStorage = JSON.parse(localStorage.getItem("mode"));
+
+    const modeolor = modeStorage.mode === "dark" ? "#393d3fff" : "#c6c5b9ff";
+
     // alert
-    normalAlertIcon("Que mal, Casi lo logras", "warning", "😪", 1800);
+    normalAlertIcon(
+      `Que mal, Casi lo logras.
+       La palabra era: <span style="color:${modeolor};">${wordSecret}<span>  `,
+      "warning",
+      "😪",
+      1800
+    );
 
     restartGameLossWin();
   }
