@@ -96,7 +96,7 @@ const validateLoss = (life) => {
     // alert
     normalAlertIcon(
       `Que mal, Casi lo logras.
-       La palabra era: <span style="color:${modeolor};">${wordSecret}<span>  `,
+       La palabra era: <span style="color:${modeolor};">${wordSecret}<span>`,
       "warning",
       "😪",
       1800

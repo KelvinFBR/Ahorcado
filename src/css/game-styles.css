@@ -218,7 +218,6 @@ html {
 /* footer */
 .footer-container {
   width: 100%;
-  min-height: 5rem;
   background-color: var(--steel-teal);
   color: var(--white);
   display: flex;
@@ -233,12 +232,14 @@ html {
 
 .footer-container section {
   font-size: var(--font-size-small);
+  margin: 0.5rem 0;
 }
 
 .social-container {
   display: flex;
   justify-content: center;
   align-content: center;
+  margin: 0.5rem 0;
 }
 
 .social-container a {
@@ -330,10 +331,6 @@ html {
 @media screen and (min-width: 440px) {
   .footer-container {
     flex-direction: column;
-  }
-
-  .footer-container section {
-    margin: 0.5rem 0;
   }
 
   .btn {
