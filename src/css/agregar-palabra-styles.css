@@ -247,7 +247,7 @@ body {
 
 /* ! media palabra*/
 
-@media screen and (max-height: 720px) {
+@media screen and (max-height: 580px) {
   .footer-container {
     position: static;
     /* top: 35px; */
