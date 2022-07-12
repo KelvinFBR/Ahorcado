@@ -1,6 +1,6 @@
 # Alura + OracleONE - Challenge Ahorcado
 
-En este proyecto aplique el dark y light ⚫⚪ mode junto con localStorage para guardar el modo. Aplicando en la primera interaccion el modo de preferencia que tenga el sistema ⚫⚪.
+En este proyecto aplique varios de mis conocimientos para replicar el juego del ahorcado con un diseño propio y tambien le aplique dark y light ⚫⚪ mode junto con localStorage para guardar el modo. Aplicando en la primera interaccion el modo de preferencia que tenga el sistema ⚫⚪.
 
 ---
 
